@@ -1,0 +1,21 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "Проект Movies бэкенд",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mj669/express-mesto-gha.git"
+  },
+  "author": "Aleksei Kruglykhin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mj669/express-mesto-gha/issues"
+  },
+  "homepage": "https://github.com/mj669/express-mesto-gha#readme"
+}
