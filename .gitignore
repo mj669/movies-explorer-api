@@ -10,6 +10,7 @@ node_modules
 .npm
 *.env
 .env
+package-lock.json
 
 # Optional REPL history
 .DS_Store
