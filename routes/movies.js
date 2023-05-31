@@ -18,8 +18,8 @@ moviesRouter.post(
 moviesRouter.delete(
   '/:movieId',
   deleteMovieValidate,
-  deleteMovie,
   authDelete,
+  deleteMovie,
 );
 
 module.exports = moviesRouter;

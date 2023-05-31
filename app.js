@@ -1,12 +1,9 @@
 const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 const limiter = require('./utils/limiter');
 const router = require('./routes');
-const authRouter = require('./routes/auth');
-const auth = require('./middlewares/auth');
 const NotFoundError = require('./errors/notFoundError');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
@@ -21,11 +18,9 @@ app.use(requestLogger);
 app.use(helmet());
 app.use(limiter);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.use(authRouter);
-app.use(auth);
 app.use(router);
 
 app.use((req, res, next) => {

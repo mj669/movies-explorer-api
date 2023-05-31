@@ -3,7 +3,7 @@ const errors = require('../errors');
 
 const getMovies = (req, res, next) => {
   Movie.find({})
-    .populate(['owner', 'likes'])
+    .populate(['owner'])
     .then((movies) => {
       res.send(movies);
     })

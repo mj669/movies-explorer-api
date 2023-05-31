@@ -41,11 +41,11 @@ const loginUser = (req, res, next) => {
 
 const getMyProfile = (req, res, next) => {
   User.findById(req.user._id)
-    .then((user) => res.send(user))
+    .then((user) => checkUser(user, res))
     .catch((error) => {
-      if (error.name === 'ValidationError') {
+      if (error.name === 'CastError') {
         next(
-          new errors.NotFoundError('Пользователь не найден'),
+          new errors.ValidationError('Переданы некорректные данные'),
         );
       } else {
         next(error);
@@ -91,7 +91,11 @@ const updateUser = (req, res, next) => {
   User.findByIdAndUpdate(owner, { name, email }, { new: true, runValidators: true })
     .then((user) => checkUser(user, res))
     .catch((error) => {
-      if (error.name === 'ValidationError') {
+      if (error.code === 11000) {
+        next(
+          new errors.ConflictError('Пользователь с таким email уже зарегистрирвован'),
+        );
+      } else if (error.name === 'ValidationError') {
         next(
           new errors.ValidationError('Переданы некорректные данные'),
         );
