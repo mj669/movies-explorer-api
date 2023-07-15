@@ -45,7 +45,7 @@ const movieValidate = celebrate({
       .required(),
     image: Joi.string()
       .required().regex(regExUrl),
-    trailer: Joi.string()
+    trailerLink: Joi.string()
       .required().regex(regExUrl),
     thumbnail: Joi.string()
       .required().regex(regExUrl),
