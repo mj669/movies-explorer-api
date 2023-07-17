@@ -12,6 +12,8 @@ const { PORT, MONGODB_ADDRESS } = require('./utils/config');
 
 const app = express();
 
+app.use(cors());
+
 mongoose.connect(MONGODB_ADDRESS);
 
 app.use(requestLogger);
@@ -22,7 +24,7 @@ app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+// app.use(cors());
 
 app.use(router);
 
